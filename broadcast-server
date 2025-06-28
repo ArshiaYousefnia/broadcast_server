@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import sys
+import asyncio
+from models.models import BroadcastServer, BroadcastClient
+
+
+async def async_main():
+    args = sys.argv[1:]
+
+    if len(args) != 1:
+        print("commands: start, connect")
+    elif args[0] == "start":
+        server = BroadcastServer()
+        await server.start_server()
+    elif args[0] == "connect":
+        client = BroadcastClient()
+        await client.run()
+    else:
+        print("commands: start, connect")
+
+
+def main():
+    asyncio.run(async_main())
+
+
+if __name__ == "__main__":
+    main()

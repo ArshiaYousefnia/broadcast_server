@@ -1,8 +1,16 @@
 import asyncio
+import sys
 from asyncio import start_server, StreamReader, StreamWriter
 import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    stream=sys.stdout
+)
+
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 class BroadcastServer:
     def __init__(self, port: int=5000, host: str="0.0.0.0"):
